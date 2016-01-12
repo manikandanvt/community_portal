@@ -10,7 +10,7 @@ app.controller('buyerCtrl', ['$scope', 'vfr', 'buyerService', 'identityService',
         $scope.invitaions = [];
         $scope.invitaionsMap = {};
         $scope.inviteButtonText = "Invite Suppliers";
-
+	// get supplier list
         buyerService.getSuppliers($scope.user.CommunityAccount__r.Community__r.Id).then(function (c) {
             $scope.suppliers = c;
             if (!$scope.$$phase) {
