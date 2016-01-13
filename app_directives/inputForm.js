@@ -34,14 +34,36 @@ app.controller("FieldsCtrl", ['$scope','$filter' ,function ($scope,$filter) {
         {value: 'true', text: 'Yes'},
         {value: 'false', text: 'No'},
     ];
+    $scope.inputVal={};
+    $scope.init = function() {
+    	$scope.inputVal.stringVal=$scope.answers[$scope.question.Id];
+    	if ($scope.question.DataType__c == 'number') {//TODO Do this for date etc
+               if($scope.inputVal.stringVal){
+            	   if(!isNaN(Number($scope.inputVal.stringVal)))
+            		   $scope.inputVal.formVal=Number($scope.inputVal.stringVal);
+               }
+         }else{
+        	 $scope.inputVal.formVal=$scope.inputVal.stringVal;
+         }
+    };
+    $scope.init();
+//    $scope.$watch('inputVal.formVal', function (newValue, oldValue) {
+//    	if(newValue){
+//    		console.log('inputVal.formVal : ') 
+//            $scope.answers[$scope.question.Id]=newValue ;
+//    	}
+//    });
     
     $scope.showYesNoOptions = function() {
-        var selected = $filter('filter')($scope.statuses, {value: $scope.answers[$scope.question.Id]});
-        return ($scope.answers[$scope.question.Id] && selected.length) ? selected[0].text : '___';
+        var selected = $filter('filter')($scope.statuses, {value: $scope.inputVal.formVal});
+        return ($scope.inputVal.formVal && selected.length) ? selected[0].text : '___';
       };
 
     $scope.validate = function (data, validationClass) {
         //return true;
+    	if(data)
+    		$scope.answers[$scope.question.Id]=data ;
+    	
         if (validationClass == 'DUNS' && (data && data.toString().length < 9)) {
             return "DUNS number cannot be less than 9 digits"
         }

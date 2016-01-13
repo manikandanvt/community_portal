@@ -34,3 +34,9 @@ app.filter('resolveURL', ['ngForceConfig', function(ngForceConfig) {
     	return ngForceConfig.resourceUrl+key;
     }
 }]);
+
+app.filter('toNum', function() {
+    return function(input) {
+      return parseInt(input, 10);
+    };
+});

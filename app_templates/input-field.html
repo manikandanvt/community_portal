@@ -4,41 +4,41 @@
      </div>
     <div style="height:10px ;"></div>
 
-	    <span editable-text="answers[question.Id]" e-name="{{question.Name}}"
+	    <span editable-text="inputVal.formVal" e-name="{{question.Name}}"
               onbeforesave="validate($data,question.Validation__c)"
               e-id="{{question.Id}}" 
               e-ng-required="{{question.isAnswerRequired__c}}"
-              ng-if="question.DataType__c=='text'">{{ answers[question.Id] || '______' }}</span>
+              ng-if="question.DataType__c=='text'">{{ inputVal.formVal || '______' }}</span>
 
-    	    <span editable-textarea="answers[question.Id]" e-name="{{question.Name}}"
+    	    <span editable-textarea="inputVal.formVal" e-name="{{question.Name}}"
                   onbeforesave="validate($data,question.Validation__c)"
                   e-id="{{question.Id}}"
                   e-ng-required="{{question.isAnswerRequired__c}}"
-                  ng-if="question.DataType__c=='textarea'">{{ answers[question.Id] || '______' }}</span>
+                  ng-if="question.DataType__c=='textarea'">{{ inputVal.formVal || '______' }}</span>
 
-	    <span editable-number="answers[question.Id]" e-name="{{question.Name}}"
+	    <span editable-number="inputVal.formVal" e-name="{{question.Name}}"
               onbeforesave="validate($data,question.Validation__c)"
               e-ng-required="{{question.isAnswerRequired__c}}"
-              ng-if="question.DataType__c=='number'">{{ answers[question.Id] || '______' }}</span>
+              ng-if="question.DataType__c=='number'">{{ inputVal.formVal || '______' }}</span>
 
-	    <span editable-date="answers[question.Id]" e-name="{{question.Name}}"
+	    <span editable-date="inputVal.formVal" e-name="{{question.Name}}"
               onbeforesave="validate($data,question.Validation__c)"
               e-ng-required="{{question.isAnswerRequired__c}}"
-              ng-if="question.DataType__c=='date'">{{ answers[question.Id] | date:"dd-MMMM-yyyy" || '______' }}</span>
+              ng-if="question.DataType__c=='date'">{{ inputVal.formVal | date:"dd-MMMM-yyyy" || '______' }}</span>
 
-	    <span editable-url="answers[question.Id]" e-name="{{question.Name}}"
+	    <span editable-url="inputVal.formVal" e-name="{{question.Name}}"
               onbeforesave="validate($data,question.Validation__c)" 
               e-ng-required="{{question.isAnswerRequired__c}}"
-              ng-if="question.DataType__c=='url'">{{ answers[question.Id] || '______' }}</span>
+              ng-if="question.DataType__c=='url'">{{ inputVal.formVal || '______' }}</span>
 
 
-	    <span editable-email="answers[question.Id]" e-name="{{question.Name}}"
+	    <span editable-email="inputVal.formVal" e-name="{{question.Name}}"
               onbeforesave="validate($data,question.Validation__c)" 
               e-ng-required="{{question.isAnswerRequired__c}}"
-              ng-if="question.DataType__c=='email'">{{ answers[question.Id] || '______' }}</span>
+              ng-if="question.DataType__c=='email'">{{ inputVal.formVal || '______' }}</span>
 
 
-	    <span editable-select="answers[question.Id]"
+	    <span editable-select="inputVal.formVal"
               onbeforesave="validate($data,question.Validation__c)"
               e-ng-required="{{question.isAnswerRequired__c}}"
               e-ng-options="s.value as s.text for s in statuses"
